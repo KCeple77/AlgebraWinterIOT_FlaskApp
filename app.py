@@ -3,9 +3,28 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
+books = [
+    {
+        'Name': 'Snow White',
+        'Author': 'Grimm brothers'
+    },
+    {
+        'Name': 'The Song of Ice and Fire',
+        'Author': 'George R.R. Martin'
+    },
+    {
+        'Name': 'Alice in Wonderland',
+        'Author': 'Dunno'
+    }
+]
+
+
+@app.route('/', methods=['GET'])
 def hello_world():
     return 'Hello world!'
+
+@app.route('/api/books')
+def books_dictionary():
 
 
 if __name__ == "__main__":
