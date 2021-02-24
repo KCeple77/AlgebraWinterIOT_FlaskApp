@@ -109,7 +109,7 @@ def delete_book(name):
     cursor = conn.cursor()
 
     cmd = "DELETE FROM Book WHERE Name = %s"
-    params = (name)
+    params = [name]
 
     cursor.execute(cmd, params)
     conn.commit()
