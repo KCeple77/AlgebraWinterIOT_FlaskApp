@@ -51,7 +51,7 @@ def return_titles_py():
 
 @app.route('/api/books', methods=['GET'])
 def return_books_sql():
-    conn = mysql.connect()
+    conn = mysql.connect
     cursor = conn.cursor()
     cursor.execute('SELECT Name, Author FROM Book')
     rows = cursor.fetchall()
