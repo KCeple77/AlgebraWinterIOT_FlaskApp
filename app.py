@@ -58,5 +58,14 @@ def return_books_sql():
     return jsonify({'rows': rows})
 
 
+@app.route('/api/books/titles', methods=['GET'])
+def return_book_titles_sql():
+    conn = mysql.connect
+    cursor = conn.cursor()
+    cursor.execute('SELECT Name FROM Book')
+    rows = cursor.fetchall()
+    return jsonify({'titles': rows})
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
