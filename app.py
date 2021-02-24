@@ -30,7 +30,7 @@ def return_all():
     return jsonify({'books': books})
 
 
-@app.route('api/books/titles', methods=['GET'])
+@app.route('/api/books/titles', methods=['GET'])
 def return_titles():
     authors_tmp = []
 
