@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import jsonify
 from flask_mysqldb import MySQL
+from flask import request
 
 app = Flask(__name__)
 mysql = MySQL()
@@ -65,6 +66,19 @@ def return_book_titles_sql():
     cursor.execute('SELECT Name FROM Book')
     rows = cursor.fetchall()
     return jsonify({'titles': rows})
+
+
+@app.route('/api/books', methods=['POST'])
+def add_book():
+    new_book = request.get_json()
+    conn = mysql.connect
+    cursor = conn.cursor()
+
+    cursor.execute(F'INSERT INTO Book (Name, Author) VALUES ({new_book["Name"]}, {new_book["Author"]})')
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return 200
 
 
 if __name__ == "__main__":
