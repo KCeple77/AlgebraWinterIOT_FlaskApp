@@ -16,7 +16,7 @@ app.config['MYSQL_HOST'] = 'localhost'
 mysql.init_app(app)
 
 
-@app.route('/api/telemetry/get?<string:begin_point_str>&<string:end_point_str>', methods=['GET'])
+@app.route('/api/telemetry/get/<string:begin_point_str>&<string:end_point_str>', methods=['GET'])
 def return_books_sql(begin_point_str, end_point_str):
     conn = mysql.connect
     cursor = conn.cursor()
