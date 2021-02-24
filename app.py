@@ -84,5 +84,43 @@ def add_book():
     return "200"
 
 
+@app.route('/api/books/<string:name>', methods=['PUT'])
+def edit_book(name):
+    book = request.get_json()
+    print(book)
+
+    conn = mysql.connect
+    cursor = conn.cursor()
+
+    cmd = "UPDATE Book SET Name = %s, Author = %s WHERE Name = %s"
+    params = (book['Name'], book['Author'], name)
+
+    cursor.execute(cmd, params)
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return "200"
+
+
+@app.route('/api/books/delete/<string:name>', methods=['PUT'])
+def delete_book(name):
+    book = request.get_json()
+    print(book)
+
+    conn = mysql.connect
+    cursor = conn.cursor()
+
+    cmd = "DELETE FROM Book WHERE Name = %s"
+    params = (name)
+
+    cursor.execute(cmd, params)
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return "200"
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
