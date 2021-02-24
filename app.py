@@ -34,8 +34,8 @@ def return_all():
 def return_titles():
     authors_tmp = []
 
-    for name, author in books:
-        authors_tmp.append(author)
+    for book in books:
+        authors_tmp.append(book['Author'])
 
     return jsonify(authors_tmp)
 
