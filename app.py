@@ -13,8 +13,8 @@ books = [
         'Author': 'George R.R. Martin'
     },
     {
-        'Name': 'Alice in Wonderland',
-        'Author': 'Dunno'
+        'Name': 'Alice\'s Adventures in Wonderland',
+        'Author': 'Lewis Carrol'
     }
 ]
 
@@ -23,9 +23,11 @@ books = [
 def hello_world():
     return 'Hello world!'
 
-@app.route('/api/books')
-def books_dictionary():
-    return "Wut"
+
+@app.route('/api/books', methods=['GET'])
+def return_all():
+    return jsonify({'books': books})
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
