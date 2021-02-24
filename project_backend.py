@@ -26,7 +26,7 @@ def return_books_sql(begin_point_str, end_point_str):
     cursor.execute(cmd, params)
     rows = cursor.fetchall()
 
-    rows_list = rows[:]
+    rows_list = list(rows)
 
     for row in rows_list:
         rows_list[3] = str(rows_list[3])
