@@ -74,7 +74,10 @@ def add_book():
     conn = mysql.connect
     cursor = conn.cursor()
 
-    cursor.execute(F'INSERT INTO Book (Name, Author) VALUES ({new_book["Name"]}, {new_book["Author"]})')
+    cmd = 'INSERT INTO Book (Name, Author) VALUES (%s, %s)'
+    params = (new_book["Name"], new_book["Author"])
+    
+    cursor.execute(cmd, params)
     conn.commit()
     cursor.close()
     conn.close()
