@@ -4,7 +4,6 @@ from flask import Flask
 from flask import jsonify
 from flask_mysqldb import MySQL
 from flask import request
-from datetime import datetime
 
 app = Flask(__name__)
 mysql = MySQL()
@@ -26,6 +25,10 @@ def return_books_sql(begin_point_str, end_point_str):
 
     cursor.execute(cmd, params)
     rows = cursor.fetchall()
+
+    for row in rows:
+        row["SensorValue"] = str(row["SensorValue"])
+
     return jsonify({'All telemetry data': rows})
 
 
