@@ -34,12 +34,12 @@ def hello_world():
     return 'Hello world!'
 
 
-@app.route('/api/books', methods=['GET'])
-def return_all():
+@app.route('/api/temp/books', methods=['GET'])
+def return_all_py():
     return jsonify({'books': books})
 
 
-@app.route('/api/books/titles_py', methods=['GET'])
+@app.route('/api/temp/books/titles', methods=['GET'])
 def return_titles_py():
     authors_tmp = []
 
@@ -49,9 +49,14 @@ def return_titles_py():
     return jsonify(authors_tmp)
 
 
-@app.route('/api/books/titles', methods=['GET'])
-def return_titles():
-    pass
+@app.route('/api/books', methods=['GET'])
+def return_books_sql():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('SELECT Name, Author FROM Book')
+    rows = cursor.fetchall()
+    return jsonify({'rows': rows})
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
