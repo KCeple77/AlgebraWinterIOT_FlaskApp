@@ -105,9 +105,6 @@ def edit_book(name):
 
 @app.route('/api/books/delete/<string:name>', methods=['PUT'])
 def delete_book(name):
-    book = request.get_json()
-    print(book)
-
     conn = mysql.connect
     cursor = conn.cursor()
 
