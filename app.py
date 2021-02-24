@@ -7,8 +7,8 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 mysql = MySQL()
 
-app.config['MYSQL_USER'] = 'booksuser'
-app.config['MYSQL_PASSWORD'] = 'BooksUser123.'
+app.config['MYSQL_USER'] = 'bookuser'
+app.config['MYSQL_PASSWORD'] = 'BookUser123.'
 app.config['MYSQL_DB'] = 'booksDB'
 app.config['MYSQL_HOST'] = 'localhost'
 mysql.init_app(app)
