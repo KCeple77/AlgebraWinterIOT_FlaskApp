@@ -2,7 +2,16 @@
 
 from flask import Flask
 from flask import jsonify
+from flask_mysqldb import MySQL
+
 app = Flask(__name__)
+mysql = MySQL()
+
+app.config['MYSQL_USER'] = 'booksuser'
+app.config['MYSQL_PASSWORD'] = 'BooksUser123.'
+app.config['MYSQL_DB'] = 'booksDB'
+app.config['MYSQL_HOST'] = 'localhost'
+mysql.init_app(app)
 
 books = [
     {
@@ -30,8 +39,8 @@ def return_all():
     return jsonify({'books': books})
 
 
-@app.route('/api/books/titles', methods=['GET'])
-def return_titles():
+@app.route('/api/books/titles_py', methods=['GET'])
+def return_titles_py():
     authors_tmp = []
 
     for book in books:
@@ -39,6 +48,10 @@ def return_titles():
 
     return jsonify(authors_tmp)
 
+
+@app.route('/api/books/titles', methods=['GET'])
+def return_titles():
+    pass
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
