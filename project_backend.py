@@ -37,7 +37,7 @@ def add_book():
 
     # SensorName and SensorValue
     cmd = "INSERT INTO Measurement (DeviceId, SensorName, SensorValue, CreatedOn) VALUES ((SELECT DeviceId FROM Device WHERE %s = Name), %s, %s, NOW());"
-    params = (data_piece['SensorName'], data_piece['SensorValue'])
+    params = [data_piece['SensorName'], data_piece['SensorValue']]
 
     cursor.execute(cmd, params)
     conn.commit()
