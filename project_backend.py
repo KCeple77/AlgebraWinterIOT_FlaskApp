@@ -1,11 +1,22 @@
 #!/usr/bin/python3
-
+import flask
+import decimal
 from flask import Flask
 from flask import jsonify
 from flask_mysqldb import MySQL
 from flask import request
 
+
+class MyJSONEncoder(flask.json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, decimal.Decimal):
+            return str(obj)
+        else:
+            return super(MyJSONEncoder, self).default(obj)
+
+
 app = Flask(__name__)
+app.json_encoder = MyJSONEncoder
 mysql = MySQL()
 
 app.config['MYSQL_USER'] = 'telemetryuser'
@@ -26,12 +37,7 @@ def return_books_sql(begin_point_str, end_point_str):
     cursor.execute(cmd, params)
     rows = cursor.fetchall()
 
-    rows_list = list(rows)
-
-    for row in rows_list:
-        rows_list[3] = str(rows_list[3])
-
-    return jsonify({'All telemetry data': rows_list})
+    return jsonify({'All telemetry data': rows})
 
 
 @app.route('/api/telemetry/post', methods=['POST'])
