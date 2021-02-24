@@ -103,7 +103,7 @@ def edit_book(name):
     return "200"
 
 
-@app.route('/api/books/delete/<string:name>', methods=['PUT'])
+@app.route('/api/books/delete/<string:name>', methods=['DELETE'])
 def delete_book(name):
     conn = mysql.connect
     cursor = conn.cursor()
