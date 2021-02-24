@@ -27,7 +27,7 @@ def hello_world():
 
 @app.route('/api/books', methods=['GET'])
 def return_all():
-    return jsonify(books=books)
+    return jsonify({'books': books})
 
 
 if __name__ == "__main__":
