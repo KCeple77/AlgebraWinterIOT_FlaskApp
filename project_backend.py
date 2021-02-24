@@ -27,7 +27,7 @@ def return_books_sql(begin_point_str, end_point_str):
     rows = cursor.fetchall()
 
     for row in rows:
-        row["SensorValue"] = str(row["SensorValue"])
+        row[3] = str(row[3])
 
     return jsonify({'All telemetry data': rows})
 
