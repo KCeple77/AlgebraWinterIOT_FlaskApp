@@ -26,10 +26,12 @@ def return_books_sql(begin_point_str, end_point_str):
     cursor.execute(cmd, params)
     rows = cursor.fetchall()
 
-    for row in rows:
-        row[3] = str(row[3])
+    rows_list = rows[:]
 
-    return jsonify({'All telemetry data': rows})
+    for row in rows_list:
+        rows_list[3] = str(rows_list[3])
+
+    return jsonify({'All telemetry data': rows_list})
 
 
 @app.route('/api/telemetry/post', methods=['POST'])
