@@ -30,5 +30,15 @@ def return_all():
     return jsonify({'books': books})
 
 
+@app.route('api/books/titles', methods=['GET'])
+def return_titles():
+    authors_tmp = []
+
+    for name, author in books:
+        authors_tmp.append(author)
+
+    return jsonify(authors_tmp)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
