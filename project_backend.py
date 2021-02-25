@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import flask
 import decimal
+
+import flask
 from flask import Flask
 from flask import jsonify
-from flask_mysqldb import MySQL
 from flask import request
+from flask_mysqldb import MySQL
 
 
 class MyJSONEncoder(flask.json.JSONEncoder):
@@ -63,6 +64,12 @@ def add_measurement():
         return "200"
     except Exception as e:
         print("Error: unable to fetch items", e)
+
+
+@app.route('/', methods=['GET'])
+def return_index():
+    with open("templates/index.html") as index:
+        return index.read()
 
 
 if __name__ == "__main__":
