@@ -2,7 +2,7 @@
 import decimal
 
 import flask
-from flask import Flask
+from flask import Flask, render_template
 from flask import jsonify
 from flask import request
 from flask_mysqldb import MySQL
@@ -68,9 +68,21 @@ def add_measurement():
 
 @app.route('/', methods=['GET'])
 def return_index():
-    with open("templates/index.html") as index:
-        return index.read()
+    return render_template("index.html")
 
+
+@app.route('/temperature')
+def return_temperature():
+    return render_template("temperature.html")
+
+
+@app.route('/heartrate')
+def return_heartrate():
+    pass
+
+@app.route('/battery')
+def return_battery():
+    pass
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
