@@ -50,6 +50,8 @@ def add_measurement():
         conn = mysql.connect
         cursor = conn.cursor()
 
+        print("Received: ", data_piece)
+
         # SensorName and SensorValue
         cmd = "INSERT INTO Measurement (DeviceId, SensorName, SensorValue, CreatedOn) VALUES ((SELECT DeviceId FROM Device WHERE %s = Name), %s, %s, NOW());"
         params = [data_piece['SensorName'], data_piece['SensorName'], data_piece['SensorValue']]
