@@ -13,3 +13,10 @@ body{
 .navbar{
     min-height: 50px;
 }
+
+.header {
+    background-image: url("/static/images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
