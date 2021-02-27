@@ -5,6 +5,7 @@ import flask
 from flask import Flask, render_template
 from flask import jsonify
 from flask import request
+from flask import CORS, cross_origin
 from flask_mysqldb import MySQL
 
 
@@ -17,6 +18,7 @@ class MyJSONEncoder(flask.json.JSONEncoder):
 
 
 app = Flask(__name__)
+cors = CORS(app)
 app.json_encoder = MyJSONEncoder
 mysql = MySQL()
 
@@ -87,6 +89,7 @@ def return_battery():
 
 
 @app.route('/api/telemetry/devices')
+@cross_origin()
 def return_devices():
     try:
         conn = mysql.connect
