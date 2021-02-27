@@ -9,6 +9,9 @@ $.ajax({
         names = [];
         lats = [];
         longs = [];
+
+        console.log(response)
+
         for(var i = 0; i < response.length; i++) {
             devids[i] = response[i]['DeviceId'];
             names[i] = response[i]['Name'];
