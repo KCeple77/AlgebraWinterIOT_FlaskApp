@@ -89,6 +89,30 @@ def return_battery():
     pass
 
 
+@app.route('/api/telemetry/measurement')
+def return_measurement():
+    try:
+        conn = mysql.connect
+        cursor = conn.cursor()
+
+        cmd = 'SELECT SensorValue, CreatedOn  FROM Measurement WHERE SensorName = "Temperature";'
+
+        cursor.execute(cmd)
+        rows = cursor.fetchall()
+
+        to_ret_json = []
+        for row in rows:
+            to_ret_json.append(
+                {
+                    'SensorValue': row[0],
+                    'CreatedOn': row[1]
+                }
+            )
+
+        return jsonify(to_ret_json)
+    except Exception as e:
+        print("Error: unable to fetch items", e)
+
 @app.route('/api/telemetry/devices')
 @cross_origin()
 def return_devices():
@@ -100,9 +124,21 @@ def return_devices():
 
         cursor.execute(cmd)
         rows = cursor.fetchall()
-        return jsonify(rows)
+
+        to_ret_json = []
+        for row in rows:
+            to_ret_json.append(
+                {
+                    'DeviceId': row[0],
+                    'Name': row[1],
+                    'latitude': row[2],
+                    'longitude': row[3],
+                }
+            )
+
+        return jsonify(to_ret_json)
     except Exception as e:
-        print("Error: unabel to fetch items", e)
+        print("Error: unable to fetch items", e)
 
 
 @app.route('/map')

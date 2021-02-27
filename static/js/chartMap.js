@@ -13,10 +13,10 @@ $.ajax({
         console.log(response)
 
         for(var i = 0; i < response.length; i++) {
-            devids[i] = response[i][0];
-            names[i] = response[i][1];
-            lats[i] = parseFloat(response[i][2]);
-            longs[i] = parseFloat(response[i][3]);
+            devids[i] = response[i]['DeviceId'];
+            names[i] = response[i]['Name'];
+            lats[i] = parseFloat(response[i]['latitude']);
+            longs[i] = parseFloat(response[i]['longitude']);
         }
 
         var map = L.map('Mymap').setView([45.2705, 45.1500], 3);
