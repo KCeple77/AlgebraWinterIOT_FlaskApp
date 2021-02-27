@@ -86,7 +86,6 @@ def return_battery():
     pass
 
 
-
 @app.route('/devices')
 def return_devices():
     try:
@@ -98,7 +97,7 @@ def return_devices():
         cursor.execute(cmd)
         rows = cursor.fetchall()
 
-        return jsonify({'All telemetry data': rows})
+        return jsonify(rows)
     except Exception as e:
         print("Error: unabel to fetch items", e)
 
