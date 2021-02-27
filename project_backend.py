@@ -86,7 +86,7 @@ def return_battery():
     pass
 
 
-@app.route('/devices')
+@app.route('/api/telemetry/devices')
 def return_devices():
     try:
         conn = mysql.connect
