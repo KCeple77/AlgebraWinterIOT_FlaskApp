@@ -100,7 +100,6 @@ def return_devices():
 
         cursor.execute(cmd)
         rows = cursor.fetchall()
-
         return jsonify(rows)
     except Exception as e:
         print("Error: unabel to fetch items", e)
