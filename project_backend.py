@@ -5,7 +5,7 @@ import flask
 from flask import Flask, render_template
 from flask import jsonify
 from flask import request
-from flask import CORS, cross_origin
+from flask_cors import CORS, cross_origin
 from flask_mysqldb import MySQL
 
 
@@ -26,6 +26,7 @@ app.config['MYSQL_USER'] = 'telemetryuser'
 app.config['MYSQL_PASSWORD'] = 'TelemetryUser123.'
 app.config['MYSQL_DB'] = 'telemetryDB'
 app.config['MYSQL_HOST'] = 'localhost'
+app.config['CORS_HEADERS'] = 'Content-Type'
 mysql.init_app(app)
 
 
