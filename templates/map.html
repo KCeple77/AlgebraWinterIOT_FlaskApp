@@ -16,7 +16,7 @@
       <div class="container-fluid">
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-             <li role="presentation"><a href="#">Home</a></li>
+             <li role="presentation"><a href="/">Home</a></li>
              <li role="presentation" class="active"><a href="#">Map</a></li>
              <li role="presentation"><a href="/temperature">Temperature</a></li>
              <li role="presentation"><a href="/heartrate">Heartrate</a></li>
@@ -29,5 +29,13 @@
 
     <header class="page-header header container-fluid"></header>
     <script src="/static/js/home.js"></script>
+
+    <div id="container">
+        <div id="Mymap"></div>
+    </div>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet-src.js"></script>
+    <script src="http://leaflet.github.io/Leaflet.label/leaflet.label.js"></script>
+    <script src="../static/js/chartMap.js"></script>
 </body>
 </html>
