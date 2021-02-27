@@ -12,11 +12,11 @@ $.ajax({
         for(var i = 0; i < response.length; i++) {
             devids[i] = response[i]['DeviceId'];
             names[i] = response[i]['Name'];
-            lats[i] = response[i]['latitude'];
-            longs[i] = response[i]['longitude'];
+            lats[i] = parseFloat(response[i]['latitude']);
+            longs[i] = parseFloat(response[i]['longitude']);
         }
 
-        var map = L.map('Mymap').setView([45.2705, 15.1500], 3);
+        var map = L.map('Mymap').setView([45.2705, 45.1500], 3);
 
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
