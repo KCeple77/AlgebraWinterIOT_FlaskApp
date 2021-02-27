@@ -86,6 +86,23 @@ def return_battery():
     pass
 
 
+
+@app.route('/devices')
+def return_devices():
+    try:
+        conn = mysql.connect
+        cursor = conn.cursor()
+
+        cmd = 'SELECT * FROM Device;'
+
+        cursor.execute(cmd)
+        rows = cursor.fetchall()
+
+        return jsonify({'All telemetry data': rows})
+    except Exception as e:
+        print("Error: unabel to fetch items", e)
+
+
 @app.route('/map')
 def return_map():
     return render_template("map.html")
