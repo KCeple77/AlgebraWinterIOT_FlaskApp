@@ -80,9 +80,11 @@ def return_temperature():
 def return_heartrate():
     pass
 
+
 @app.route('/battery')
 def return_battery():
     pass
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
