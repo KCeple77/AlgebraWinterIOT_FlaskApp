@@ -87,7 +87,7 @@ def return_battery():
 
 
 @app.route('/map')
-def return_battery():
+def return_map():
     return render_template("map.html")
 
 
