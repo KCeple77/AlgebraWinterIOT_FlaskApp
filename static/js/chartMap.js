@@ -1,5 +1,5 @@
 $.ajax({
-    url: "https://algebrawinteriotkceple.westeurope.cloudapp.azure.com/api/telemetry/devices",
+    url: "http://algebrawinteriotkceple.westeurope.cloudapp.azure.com:80/api/telemetry/devices",
     data: {
     },
     cache: false,
